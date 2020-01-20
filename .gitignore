@@ -4,3 +4,5 @@
 */.terraform
 */Presentation_Files*
 .terraform
+terraform.tfstate
+terraform.tfstate.backup
