@@ -1,5 +1,5 @@
 variable "vpc_id" {
-  default     =   "vpc-abcd"
+  default     =   "vpc-123455"
   description =   "Enter the vpc id"
 }
 
@@ -29,11 +29,12 @@ variable "squid_tags" {
 
 variable "squid_subnets" {
   type        =   list
-  default     =   ["172.16.1.0/24", "172.16.2.0/24"]
+  default     =   ["20.0.3.0/24", "20.0.4.0/24"]
 }
 
 variable "route_table_public" {
-  default   =   "rtb-01234567"
+  default     =   "rtb-1234455"
+  description =   "Enter the id of public route table"
 }
 
 variable "squid_sg_suffix" {
@@ -60,7 +61,8 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  default   =   "squid"
+  default   =   "squid-dev"
+  description = "Enter the name of existing keypair"
 }
 
 variable "instance_suffix" {
