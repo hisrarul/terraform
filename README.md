@@ -1,5 +1,5 @@
 # terraform
-For training
+Sample templates
 
 ## Terraform Versions
 https://releases.hashicorp.com/terraform/
