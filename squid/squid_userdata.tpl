@@ -44,6 +44,7 @@ chmod +x /etc/squid/squid-conf-refresh.sh
 cat > ~/mycron << 'EOF'
 * * * * * /etc/squid/squid-conf-refresh.sh
 0 0 * * * sleep $(($RANDOM % 3600)); yum -y update --security
+0 0 * * * /usr/sbin/squid -k rotate
 EOF
 crontab ~/mycron
 rm ~/mycron
