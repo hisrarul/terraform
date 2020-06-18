@@ -3,6 +3,8 @@
 ## AWS  Blog
 https://aws.amazon.com/blogs/security/how-to-add-dns-filtering-to-your-nat-instance-with-squid/
 
+https://docs.amazonaws.cn/en_us/codebuild/latest/userguide/use-proxy-server.html
+
 ## Andreev Blog
 https://blog.andreev.it/?p=6035
 
