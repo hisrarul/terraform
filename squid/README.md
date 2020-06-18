@@ -20,9 +20,14 @@ https://forum.netgate.com/topic/124581/solved-help-needed-bypass-squid-and-squid
 
 https://www.spinics.net/lists/squid/msg87876.html
 
+https://forum.netgate.com/topic/148642/bypass-squid-proxy-for-domain-name
+
+## Bypass domains using IPtables
+https://gist.github.com/elico/e0faadf0cc63942c5aaade808a87deef
+
 ## Git verbose
-export GIT_CURL_VERBOSE=1
-export GIT_TRACE_PACKET=2
-git --version
+export GIT_CURL_VERBOSE=1\
+export GIT_TRACE_PACKET=2\
+git --version\
 curl --version
 
