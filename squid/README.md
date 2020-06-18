@@ -18,3 +18,9 @@ http://marek.helion.pl/install/squid.html
 
 https://forum.netgate.com/topic/124581/solved-help-needed-bypass-squid-and-squidguard-for-itunes-applestore-android/10
 
+## Git verbose
+export GIT_CURL_VERBOSE=1
+export GIT_TRACE_PACKET=2
+git --version
+curl --version
+
