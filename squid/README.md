@@ -1,5 +1,8 @@
 #### References:
 
+## Transparent Proxy
+https://wiki.alpinelinux.org/wiki/Setting_up_Explicit_Squid_Proxy
+
 ## AWS  Blog
 https://aws.amazon.com/blogs/security/how-to-add-dns-filtering-to-your-nat-instance-with-squid/
 
