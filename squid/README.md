@@ -36,3 +36,15 @@ export GIT_TRACE_PACKET=2\
 git --version\
 curl --version
 
+
+# Error Faced
+> ssh_exchange_identification: Connection reset by peer
+
+> failed to export image: failed to set parent sha256:xxxxxxxxxxxxxxxx: unknown parent image ID
+
+> ssh: connect to host gitlab.com port 22: Cannot assign requested address
+```
+Please make sure you have the correct access rights and the repository exists.
+```
+
+> Unable to Download using wget behind a proxy
