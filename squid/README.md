@@ -39,6 +39,9 @@ curl --version
 
 # Error Faced
 > ssh_exchange_identification: Connection reset by peer
+```
+https://docs.gitlab.com/ee/ssh/
+```
 
 > failed to export image: failed to set parent sha256:xxxxxxxxxxxxxxxx: unknown parent image ID
 
