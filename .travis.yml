@@ -5,6 +5,8 @@ language: bash
 # Export variables
 env:
   - tf_version=0.12.26 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"
+  - bucket_name='s3-k8s-backend-israrul'
+  - build=plan-$(date +%d%m%y%H%M)
 
 # Only build pushes to master branch
 branches:
@@ -19,6 +21,7 @@ before_install:
   - rm terraform_"$tf_version"_linux_amd64.zip
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
+  - cd ./kubernetes
 
 # Terraform Plan and Apply
 # Plan only on pull requests, Apply on merged code
@@ -28,17 +31,15 @@ jobs:
       # Only run terraform validate and plan state if within a pull request
       if: type IN (pull_request)
       script:
-        - pwd
-        - cd ./kubernetes
+        - ls
     - stage: terraform apply
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = master
       script:
-        - bucket_name='s3-k8s-backend-israrul'
+        - echo $(pwd)
         - aws s3 ls s3://$bucket_name
         - if [ $? -eq 0 ]; then echo "$bucket_name, bucket is available"; else aws s3 mb s3://$bucket_name; fi
-        - sed -i "s/bucketname/$bucket_name/" kubernetes/backend.tf
-        - build=plan-$(date +%d%m%y%H%M)
+        - sed -i "s/bucketname/$bucket_name/" backend.tf
         - terraform init $tf_init_cli_options
         - terraform plan -out $build
         - terraform apply $build --auto-approve
