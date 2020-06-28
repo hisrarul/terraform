@@ -34,5 +34,7 @@ jobs:
     - stage: terraform apply
       script:
         - echo "Executing Terraform Apply on merged code"
+        - DATE=$(date +%d%m%y-%H%M)
         - terraform init $tf_init_cli_options
+        - terraform plan -out plan-$DATE $tf_apply_cli_options
         - terraform apply $tf_apply_cli_options
