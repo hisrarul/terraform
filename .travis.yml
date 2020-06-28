@@ -17,7 +17,6 @@ before_install:
   - unzip terraform_"$tf_version"_linux_amd64.zip
   - sudo mv terraform /usr/local/bin/
   - rm terraform_"$tf_version"_linux_amd64.zip
-  - cd kubernetes
 
 # Terraform Plan and Apply
 # Plan only on pull requests, Apply on merged code
@@ -27,14 +26,18 @@ jobs:
       # Only run terraform validate and plan state if within a pull request
       if: type IN (pull_request)
       script:
-        - echo "Executing Terraform Plan on pull request code"
-        - terraform init $tf_init_cli_options
-        - terraform validate $tf_validation_cli_options
-        - terraform plan $tf_plan_cli_options
+        - pwd
+        - cd ./kubernetes
     - stage: terraform apply
+      # Only run terraform apply stage if outside of a pull request
+      if: type IN (push) and branch = master
       script:
-        - echo "Executing Terraform Apply on merged code"
-        - DATE=$(date +%d%m%y-%H%M)
+        - bucket_name='s3-k8s-backend-israrul'
+        - aws s3 ls s3://$bucket_name
+        - if [ $? -eq 0 ]; then echo "$bucket_name, bucket is available"; else aws s3 mb s3://$bucket_name; fi
+        - sed -i "s/bucketname/$bucket_name/" kubernetes/backend.tf
+        - build=plan-$(date +%d%m%y%H%M)
         - terraform init $tf_init_cli_options
-        - terraform plan -out plan-$DATE $tf_apply_cli_options
-        - terraform apply $tf_apply_cli_options
+        - terraform plan -out $build
+        - terraform apply $build --auto-approve
+        - aws s3 cp $build s3://$bucket_name
