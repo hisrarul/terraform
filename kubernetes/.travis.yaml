@@ -43,5 +43,5 @@ jobs:
         - build=plan-$(date +%d%m%y%H%M)
         - terraform init $tf_init_cli_options
         - terraform plan -out $build
-        - terraform apply $build $tf_apply_cli_options
+        - terraform apply $build --auto-approve
         - aws s3 cp $build s3://$bucket_name
