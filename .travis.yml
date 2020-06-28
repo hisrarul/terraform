@@ -17,7 +17,6 @@ before_install:
   - unzip terraform_"$tf_version"_linux_amd64.zip
   - sudo mv terraform /usr/local/bin/
   - rm terraform_"$tf_version"_linux_amd64.zip
-  - pyenv global 3.7.1
   - pip install awscli
 
 # Terraform Plan and Apply
