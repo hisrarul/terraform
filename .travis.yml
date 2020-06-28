@@ -4,9 +4,7 @@ language: bash
 
 # Export variables
 env:
-  - tf_version=0.12.26 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"
-  - bucket_name='s3-k8s-backend-israrul'
-  - build=plan-$(date +%d%m%y%H%M)
+  - tf_version=0.12.26 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false" bucket_name='s3-k8s-backend-israrul' build=plan-$(date +%d%m%y%H%M)
 
 # Only build pushes to master branch
 branches:
