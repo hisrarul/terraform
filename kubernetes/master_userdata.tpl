@@ -1,5 +1,3 @@
-# k8s master userdata
-
 Content-Type: multipart/mixed; boundary="//"
 MIME-Version: 1.0
 
