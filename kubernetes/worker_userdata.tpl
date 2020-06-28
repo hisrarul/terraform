@@ -157,10 +157,8 @@ HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/local-hostname)
 
 hostnamectl set-hostname $HOSTNAME
 
-aws s3 cp s3://${S3_BUCKET_NAME}/kubeadm-join.sh /tmp --region ap-south-1
+until [ -f /tmp/kubeadm-join.sh ]; do sleep 30; echo "Still preparing to download .."; aws s3 cp s3://k8s-israrul-s3-demo/kubeadm-join.sh /tmp --region ap-south-1; done
 
 chmod +x /tmp/kubeadm-join.sh
-
-sleep 600
 
 sh /tmp/kubeadm-join.sh
