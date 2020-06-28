@@ -4,6 +4,9 @@ language: bash
 
 # Export variables
 env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
   - tf_version=0.12.26 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"
 
 # Only build pushes to master branch
@@ -17,6 +20,7 @@ before_install:
   - unzip terraform_"$tf_version"_linux_amd64.zip
   - sudo mv terraform /usr/local/bin/
   - rm terraform_"$tf_version"_linux_amd64.zip
+  - pyenv global 3.7.1
   - pip install -U pip
   - pip install awscli
 
