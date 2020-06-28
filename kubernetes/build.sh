@@ -15,6 +15,8 @@ terraform init
 
 terraform plan -out "$build"
 
-terraform apply "$build" --auto-approve
+echo "terraform apply $build --auto-approve"
+
+terraform apply $build --auto-approve
 
 aws s3 cp "$build" s3://"$bucket_name"
