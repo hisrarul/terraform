@@ -39,7 +39,7 @@ jobs:
         - bucket_name='s3-k8s-backend-israrul'
         - aws s3 ls s3://$bucket_name
         - if [ $? -eq 0 ]; then echo "$bucket_name, bucket is available"; else aws s3 mb s3://$bucket_name; fi
-        - echo "Executing Terraform Apply on merged code"
+        - sed -i "s/bucketname/$bucket_name/" kubernetes/backend.tf
         - build=plan-$(date +%d%m%y%H%M)
         - terraform init $tf_init_cli_options
         - terraform plan -out $build
