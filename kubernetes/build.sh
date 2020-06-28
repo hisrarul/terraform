@@ -13,10 +13,10 @@ sed -i "s/bucketname/$bucket_name/" backend.tf
 
 terraform init
 
-terraform plan -out "$build"
+terraform plan -out=$build
 
-echo "terraform apply $build --auto-approve"
+echo "terraform apply $build -auto-approve"
 
-terraform apply $build --auto-approve
+terraform apply -auto-approve
 
 aws s3 cp "$build" s3://"$bucket_name"
