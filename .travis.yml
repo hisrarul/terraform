@@ -17,6 +17,8 @@ before_install:
   - unzip terraform_"$tf_version"_linux_amd64.zip
   - sudo mv terraform /usr/local/bin/
   - rm terraform_"$tf_version"_linux_amd64.zip
+  - pip install -U pip
+  - pip install awscli
 
 # Terraform Plan and Apply
 # Plan only on pull requests, Apply on merged code
