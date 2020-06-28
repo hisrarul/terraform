@@ -20,3 +20,7 @@ echo "terraform apply $build -auto-approve"
 terraform apply -auto-approve
 
 aws s3 cp "$build" s3://"$bucket_name"
+
+
+# Destroy all
+terraform destroy -auto-approve
