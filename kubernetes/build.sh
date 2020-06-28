@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bucket_name='s3-k8s-backend-israrul' 
+bucket_name='s3-k8s-backend' 
 build=plan-$(date +%d%m%y%H%M)
 
 echo $(pwd)
