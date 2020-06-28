@@ -34,4 +34,4 @@ jobs:
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = master
       script:
-        - ./kubernetes/build.sh
+        - ./build.sh
