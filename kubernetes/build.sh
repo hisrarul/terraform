@@ -23,4 +23,4 @@ aws s3 cp "$build" s3://"$bucket_name"
 
 
 # Destroy all
-terraform destroy -auto-approve
+# terraform destroy -auto-approve
